@@ -8,7 +8,7 @@ remove_keys = [
   "action_object_map", "action_ref_map", "action_type_map", "aff_platform",
   "aff_trace_key", "assetId", "assetType", "btsid", "c_id", "campaignId",
   "campaign_id", "cmpid", "elqTrack", "elqTrackId", "fbclid", "gclid",
-  "gclsrc", "hmb_campaign", "hmb_medium", "hmb_source", "hrc", "hsCtaTracking",
+  "gclsrc", "hmb_campaign", "hmb_medium", "hmb_source", "hrc", "hsCtaTracking", "igsh",
   "igshid", "mbid", "mc_cid", "mc_eid", "mkt_tok", "nr_email_referer", "pq",
   "qs", "recipientId", "redircnt", "refsrc", "s_cid", "sc", "sc_campaign", "sc_channel",
   "sc_cid", "sc_content", "sc_country", "sc_geo", "sc_medium", "sc_outcome", "scm",

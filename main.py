@@ -1,11 +1,10 @@
-from discord import Message, TextChannel, Member # , Webhook, File
+from discord import Client, Intents, Message, TextChannel, Member # , File
 from urllib.parse import parse_qs, urlparse
 from types import ModuleType
 import importlib.util
-import discord
 import os, re
 
-class MyClient(discord.Client):
+class MyClient(Client):
   async def on_ready(self):
     print(f"Logged on as {self.user}!")
     self.rules = self.load_rules()
@@ -30,7 +29,7 @@ class MyClient(discord.Client):
       return await message.channel.send(cleaned_content)
 
     if (
-      not message.attachments
+      not message.attachments  # TODO: Look down
       and isinstance(message.author, Member)
       and message.channel.permissions_for(message.author).manage_messages
     ):  await message.delete()
@@ -39,7 +38,7 @@ class MyClient(discord.Client):
     if message.poll:
       kwargs["poll"] = message.poll
 
-    # if message.attachments:
+    # if message.attachments:  # TODO: now look up
     #   kwargs["files"] = [
     #     File(fp=attachment.url, filename=attachment.filename)
     #     for attachment in message.attachments
@@ -89,8 +88,7 @@ class MyClient(discord.Client):
       module = importlib.util.module_from_spec(spec)
       spec.loader.exec_module(module)
 
-      if hasattr(module, "matches"):
-        rules.append(module)
+      if hasattr(module, "matches"):  rules.append(module)
 
     return rules
 
@@ -102,7 +100,7 @@ async def sub(pattern: str, repl_async, text: str) -> str:
     last_end = match.end()
   return result + text[last_end:]
 
-intents = discord.Intents.default()
+intents = Intents.default()
 intents.guilds = intents.moderation = intents.messages = True
 intents.guild_messages = intents.webhooks = intents.message_content  = True
 

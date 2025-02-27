@@ -7,10 +7,11 @@ async def matches(
   hostname: str, basedomain: str,
   pathname: str, query: dict[str, list[str]],
 ) -> str:
-  try:
-    if basedomain == "instagram.com" and query.get('igsh') != None:
-      query.pop('igsh')
-      return toString(applyQuery(uri, query))
-  except:
-    return url
+  # Already done at zzz.py (igsh, igshid)
+  #try:
+  #  if basedomain == "instagram.com" and query.get('igsh') != None:
+  #    query.pop('igsh')
+  #    return toString(applyQuery(uri, query))
+  #except:
+  #  return url
   return url
