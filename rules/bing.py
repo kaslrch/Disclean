@@ -7,7 +7,7 @@ async def matches(
   hostname: str, basedomain: str,
   pathname: str, query: dict[str, list[str]]
 ) -> str:
-  if basedomain == "bing.com":  # chilling
+  if basedomain == "bing.com":
     remove_keys = {"cvid", "form", "sk", "sp", "sc", "qs", "pq"}
     query = {k: v for k, v in query.items() if k not in remove_keys}
   return toString(apply_query(uri, query))
